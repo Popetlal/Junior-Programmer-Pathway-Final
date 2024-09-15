@@ -30,6 +30,11 @@ public class FpsController : MonoBehaviour
     private bool isReloading;
     private EnemyMovement enemyMovement;
     private Vector3 randomSpawnPos;
+<<<<<<< Updated upstream
+=======
+    private int ShotsFired;
+    private int TargetsHit;
+>>>>>>> Stashed changes
 
     private int targetsHit;
     private int shotsFired;
@@ -40,6 +45,16 @@ public class FpsController : MonoBehaviour
     [SerializeField] private int ammo;
     [SerializeField] private TextMeshProUGUI ammoText;
     [SerializeField] private LayerMask layerMask;
+<<<<<<< Updated upstream
+=======
+
+    [SerializeField] private TextMeshProUGUI shotsFiredText;
+    [SerializeField] private TextMeshProUGUI targetsHitText;
+
+    [SerializeField] private GameObject BananaMan;
+    [SerializeField] private GameObject BananaMan1;
+    [SerializeField] private GameObject BananaMan2;
+>>>>>>> Stashed changes
 
     [SerializeField] private GameObject BananaMan;
     [SerializeField] private GameObject BananaMan1;
@@ -78,8 +93,13 @@ public class FpsController : MonoBehaviour
 
         randomSpawnPos = new Vector3(Random.Range(-16, +10), 0, Random.Range(+4, +26));
 
+<<<<<<< Updated upstream
         targetHitText.text = $"Targets Hit: {targetsHit}";
         shotsFiredText.text = $"Shots Fired: {shotsFired}";
+=======
+        targetsHitText.text = $"Targets Hit: {TargetsHit}";
+        shotsFiredText.text = $"Shots Fired: {ShotsFired}";
+>>>>>>> Stashed changes
     }
 
     void HandleMovement()
@@ -176,7 +196,11 @@ public class FpsController : MonoBehaviour
             {
                 gunFire.Play();
                 ammo -= 1;
+<<<<<<< Updated upstream
                 shotsFired++;
+=======
+                ShotsFired++;
+>>>>>>> Stashed changes
                 ammoText.text = $"{ammo}/∞";
 
                 Ray bullet = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
@@ -189,8 +213,12 @@ public class FpsController : MonoBehaviour
                     Debug.Log($"Name: {name}");
                     string enemyName = "";
                     GameObject enemy = GameObject.Find(name);
+<<<<<<< Updated upstream
                     targetsHit++;
                     
+=======
+                    TargetsHit++;
+>>>>>>> Stashed changes
 
                     switch (name)
                     {
@@ -229,9 +257,17 @@ public class FpsController : MonoBehaviour
                     Destroy(parent);
 
 
+<<<<<<< Updated upstream
                 }
             }
 
+=======
+                } else
+                {
+                    Debug.Log("miss");
+                }
+            }            
+>>>>>>> Stashed changes
         }
     }
 
@@ -242,6 +278,12 @@ public class FpsController : MonoBehaviour
         isReloading = false;
     }
 
+<<<<<<< Updated upstream
 
 
 }
+=======
+    
+
+}
+>>>>>>> Stashed changes

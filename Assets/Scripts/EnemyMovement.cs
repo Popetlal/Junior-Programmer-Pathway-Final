@@ -31,8 +31,12 @@ public class EnemyMovement : MonoBehaviour
         {
             gameObject.transform.Rotate(0, 180, 0);
             gameObject.transform.position += Vector3.left * Time.deltaTime * speed;
+<<<<<<< Updated upstream
         }
         else
+=======
+        } else
+>>>>>>> Stashed changes
         {
             gameObject.transform.position += gameObject.transform.forward * speed * Time.deltaTime;
             Vector3 pos = gameObject.transform.position;

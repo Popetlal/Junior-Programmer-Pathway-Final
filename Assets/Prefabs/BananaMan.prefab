@@ -292,6 +292,63 @@ Transform:
   - {fileID: 5144442127405112126}
   m_Father: {fileID: 7054931839657382854}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< Updated upstream
+=======
+--- !u!1 &1008462052388666895
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6353135364637559574}
+  - component: {fileID: 5801658256536652651}
+  m_Layer: 6
+  m_Name: BananaManMesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6353135364637559574
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008462052388666895}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.0049828864, y: 0.023929423, z: 0.012333419}
+  m_LocalScale: {x: 11.476668, y: 11.476667, z: 11.476668}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3633657773177410159}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!64 &5801658256536652651
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008462052388666895}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2959467708922500008, guid: 81bb9eea30387e442899949a80011e55, type: 3}
+>>>>>>> Stashed changes
 --- !u!1 &1054445172658577970
 GameObject:
   m_ObjectHideFlags: 0
@@ -1267,7 +1324,11 @@ Transform:
   - {fileID: 1729270195156918802}
   - {fileID: 7673123294077979712}
   - {fileID: 6096773160998901420}
+<<<<<<< Updated upstream
   - {fileID: 5237103757134007568}
+=======
+  - {fileID: 6353135364637559574}
+>>>>>>> Stashed changes
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!95 &8118432131942992911
@@ -1845,6 +1906,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1674781366779438730}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< Updated upstream
 --- !u!1 &7041493658934271809
 GameObject:
   m_ObjectHideFlags: 0
@@ -1899,6 +1961,8 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 2959467708922500008, guid: 81bb9eea30387e442899949a80011e55, type: 3}
+=======
+>>>>>>> Stashed changes
 --- !u!1 &7112535998768425169
 GameObject:
   m_ObjectHideFlags: 0
