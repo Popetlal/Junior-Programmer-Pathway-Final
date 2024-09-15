@@ -28,15 +28,25 @@ public class FpsController : MonoBehaviour
     private Animation ADS_M4;
     private InputAction move;
     private bool isReloading;
+    private EnemyMovement enemyMovement;
+    private Vector3 randomSpawnPos;
 
-
+    private int targetsHit;
+    private int shotsFired;
 
     [SerializeField] private InputActionAsset playerControls;
     [SerializeField] private GameObject gun;
     [SerializeField] private AudioSource gunFire;
     [SerializeField] private int ammo;
     [SerializeField] private TextMeshProUGUI ammoText;
+    [SerializeField] private LayerMask layerMask;
 
+    [SerializeField] private GameObject BananaMan;
+    [SerializeField] private GameObject BananaMan1;
+    [SerializeField] private GameObject BananaMan2;
+
+    [SerializeField] private TextMeshProUGUI targetHitText;
+    [SerializeField] private TextMeshProUGUI shotsFiredText;
     // Start is called before the first frame update
 
     void Awake()
@@ -52,6 +62,7 @@ public class FpsController : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         isReloading = false;
+        enemyMovement = GameObject.Find("BananaMan").GetComponent<EnemyMovement>();
     }
 
     // Update is called once per frame
@@ -65,6 +76,10 @@ public class FpsController : MonoBehaviour
         HandleFire();
         HandleReload();
 
+        randomSpawnPos = new Vector3(Random.Range(-16, +10), 0, Random.Range(+4, +26));
+
+        targetHitText.text = $"Targets Hit: {targetsHit}";
+        shotsFiredText.text = $"Shots Fired: {shotsFired}";
     }
 
     void HandleMovement()
@@ -92,7 +107,7 @@ public class FpsController : MonoBehaviour
         verticalRotation = Mathf.Clamp(verticalRotation, -upDownRange, upDownRange);
         mainCamera.transform.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
 
-        
+
     }
 
 
@@ -119,7 +134,8 @@ public class FpsController : MonoBehaviour
         if (inputHandler.CrouchValue)
         {
             transform.localScale = new Vector3(1, 0.5f, 1);
-        } else
+        }
+        else
         {
             transform.localScale = new Vector3(1, 1, 1);
         }
@@ -155,22 +171,77 @@ public class FpsController : MonoBehaviour
             {
                 ammo = 0;
                 ammoText.text = $"0/∞";
-            } else
+            }
+            else
             {
                 gunFire.Play();
                 ammo -= 1;
+                shotsFired++;
                 ammoText.text = $"{ammo}/∞";
+
+                Ray bullet = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+                Debug.DrawRay(bullet.origin, bullet.direction * 9999);
+                RaycastHit hitInfo;
+                if (Physics.Raycast(bullet, out hitInfo, 9999, layerMask))
+                {
+                    GameObject parent = hitInfo.collider.gameObject.transform.parent.gameObject;
+                    string name = parent.name;
+                    Debug.Log($"Name: {name}");
+                    string enemyName = "";
+                    GameObject enemy = GameObject.Find(name);
+                    targetsHit++;
+                    
+
+                    switch (name)
+                    {
+                        case "BananaMan":
+                            enemyName = "BananaMan";
+                            GameObject newBananaMan = Instantiate(BananaMan, randomSpawnPos, Quaternion.Euler(0, 90, 0));
+                            if (newBananaMan.GetComponent<EnemyMovement>() == null)
+                            {
+                                newBananaMan.AddComponent<EnemyMovement>();
+                            }
+                            newBananaMan.name = "BananaMan";
+                            break;
+
+                        case "BananaMan1":
+                            enemyName = "BananaMan1";
+                            GameObject newBananaMan1 = Instantiate(BananaMan1, randomSpawnPos, Quaternion.Euler(0, 90, 0));
+                            if (newBananaMan1.GetComponent<EnemyMovement>() == null)
+                            {
+                                newBananaMan1.AddComponent<EnemyMovement>();
+                            }
+                            newBananaMan1.name = "BananaMan1";
+                            break;
+
+                        case "BananaMan2":
+                            enemyName = "BananaMan2";
+                            GameObject newBananaMan2 = Instantiate(BananaMan2, randomSpawnPos, Quaternion.Euler(0, 90, 0));
+                            if (newBananaMan2.GetComponent<EnemyMovement>() == null)
+                            {
+                                newBananaMan2.AddComponent<EnemyMovement>();
+                            }
+                            newBananaMan2.name = "BananaMan2";
+
+                            break;
+                    }
+
+                    Destroy(parent);
+
+
+                }
             }
-            
+
         }
     }
 
     void ReloadFunction()
     {
-        Debug.Log("Reload");
         ammo = 60;
         ammoText.text = $"{ammo}/∞";
         isReloading = false;
     }
+
+
 
 }
